@@ -99,20 +99,18 @@ final class StorageService: Storable, UserInfoStorable, HistoryStorable, Setting
         return one.building == two.building && one.street == two.street && one.entrance == two.entrance && one.stage == two.stage && one.flat == two.flat && one.buzzer == two.buzzer
     }
     
-    func changeCurrent(with adress: Adress) {
+    func changeCurrentAdress(with adress: Adress, for user: User) {
+        guard let info = user.userInfo else { return }
         try! realm.write {
-            user?.userInfo?.currentAdressID = Int(adress.id)
+            info.currentAdressID = Int(adress.id)
         }
     }
     
     //MARK: History
-    func savetoHistory(_ order: Order) {
-        if realm.isInWriteTransaction {
-            user?.userInfo?.history.append(order)
-        } else {
-            try! realm.write {
-                user?.userInfo?.history.append(order)
-            }
+    func saveToHistory(_ order: Order) {
+        guard let history = user?.userInfo?.history else { return }
+        try! realm.write {
+            history.append(order)
         }
     }
     
@@ -186,6 +184,8 @@ final class StorageService: Storable, UserInfoStorable, HistoryStorable, Setting
                 }
                 if let preOrder = preOrder {
                     def.preOrder = preOrder
+                } else {
+                    def.preOrder = nil
                 }
             }
         }

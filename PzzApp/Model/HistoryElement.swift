@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import RealmSwift
+
+@objcMembers final class HistoryElement: Object, ObjectKeyIdentifiable {
+    @objc dynamic var name: String = ""
+    @objc dynamic var count: Int = 0
+    @objc dynamic var price: Double = 0.0
+}

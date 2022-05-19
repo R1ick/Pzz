@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ALS Malina Regular.ttf">
+            <string>ALSMalina</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomNavBar" customModule="PzzApp" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="DXZ-RZ-cO6" id="ykd-QG-OcA"/>
+                <outlet property="deliveryTimeLabel" destination="dSC-Hn-Ciu" id="zsR-da-u3U"/>
+                <outlet property="filterButton" destination="2Bb-Sk-6IT" id="wVg-Ld-JlN"/>
+                <outlet property="phoneLabel" destination="gIl-7h-OLt" id="7eC-bL-ihC"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="DXZ-RZ-cO6">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headerBg" translatesAutoresizingMaskIntoConstraints="NO" id="Ecj-KB-Z2L">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="58"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="755-66-55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIl-7h-OLt">
+                    <rect key="frame" x="127.5" y="5" width="159.5" height="48"/>
+                    <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="34"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSC-Hn-Ciu">
+                    <rect key="frame" x="358" y="5" width="40" height="48"/>
+                    <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="34"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Bb-Sk-6IT">
+                    <rect key="frame" x="16" y="9" width="54" height="44"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="filter"/>
+                    <connections>
+                        <action selector="filterTapped:" destination="-1" eventType="touchUpInside" id="meC-K3-75s"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="zSU-7N-OFk"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Ecj-KB-Z2L" firstAttribute="top" secondItem="DXZ-RZ-cO6" secondAttribute="top" id="1F8-0T-OlD"/>
+                <constraint firstItem="zSU-7N-OFk" firstAttribute="trailing" secondItem="dSC-Hn-Ciu" secondAttribute="trailing" constant="16" id="5Yd-80-bev"/>
+                <constraint firstItem="Ecj-KB-Z2L" firstAttribute="leading" secondItem="zSU-7N-OFk" secondAttribute="leading" id="E02-MN-7ga"/>
+                <constraint firstItem="zSU-7N-OFk" firstAttribute="bottom" secondItem="Ecj-KB-Z2L" secondAttribute="bottom" id="Oit-js-z37"/>
+                <constraint firstItem="zSU-7N-OFk" firstAttribute="bottom" secondItem="2Bb-Sk-6IT" secondAttribute="bottom" constant="5" id="QKm-Hh-K9Y"/>
+                <constraint firstItem="2Bb-Sk-6IT" firstAttribute="leading" secondItem="zSU-7N-OFk" secondAttribute="leading" constant="16" id="aYA-0q-MJ6"/>
+                <constraint firstItem="zSU-7N-OFk" firstAttribute="bottom" secondItem="gIl-7h-OLt" secondAttribute="bottom" constant="5" id="exi-94-Z2T"/>
+                <constraint firstItem="gIl-7h-OLt" firstAttribute="centerX" secondItem="DXZ-RZ-cO6" secondAttribute="centerX" id="g5c-Xi-70h"/>
+                <constraint firstItem="zSU-7N-OFk" firstAttribute="trailing" secondItem="Ecj-KB-Z2L" secondAttribute="trailing" id="hIq-vk-exJ"/>
+                <constraint firstItem="zSU-7N-OFk" firstAttribute="bottom" secondItem="dSC-Hn-Ciu" secondAttribute="bottom" constant="5" id="ieO-at-DGs"/>
+                <constraint firstItem="gIl-7h-OLt" firstAttribute="centerX" secondItem="DXZ-RZ-cO6" secondAttribute="centerX" id="nae-k4-hlz"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-236.23188405797103" y="302.67857142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="filter" width="30" height="30"/>
+        <image name="headerBg" width="2399" height="333"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

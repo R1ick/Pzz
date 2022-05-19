@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct TextAndTF: View {
+    var text: String
+    var tfPlaceholder: String
+    @Binding var tfText: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct TextAndTF_Previews: PreviewProvider {
-    static var previews: some View {
-        TextAndTF()
+        VStack(alignment: .leading) {
+            TextMalina(text, size: 16)
+            TextField(tfPlaceholder, text: $tfText)
+                .textFieldStyle(.roundedBorder)
+                .cornerRadius(12)
+                .font(Font.custom("ALS Malina Regular", size: 16))
+        }
+        .padding()
     }
 }

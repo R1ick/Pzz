@@ -1,0 +1,60 @@
+PODS:
+  - Alamofire (5.5.0)
+  - AlamofireImage (4.2.0):
+    - Alamofire (~> 5.4)
+  - MapboxCommon (21.1.0)
+  - MapboxCoreMaps (10.3.2):
+    - MapboxCommon (~> 21.1)
+  - MapboxMaps (10.3.0):
+    - MapboxCommon (= 21.1.0)
+    - MapboxCoreMaps (= 10.3.2)
+    - MapboxMobileEvents (= 1.0.7)
+    - Turf (~> 2.0)
+  - MapboxMobileEvents (1.0.7)
+  - Realm (10.24.0):
+    - Realm/Headers (= 10.24.0)
+  - Realm/Headers (10.24.0)
+  - RealmSwift (10.24.0):
+    - Realm (= 10.24.0)
+  - SwiftKeychainWrapper (4.0.1)
+  - SwiftyJSON (4.3.0)
+  - Turf (2.3.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.5)
+  - AlamofireImage (~> 4.1)
+  - MapboxMaps
+  - RealmSwift (~> 10)
+  - SwiftKeychainWrapper (= 4.0.1)
+  - SwiftyJSON (~> 4.0)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireImage
+    - MapboxCommon
+    - MapboxCoreMaps
+    - MapboxMaps
+    - MapboxMobileEvents
+    - Realm
+    - RealmSwift
+    - SwiftKeychainWrapper
+    - SwiftyJSON
+    - Turf
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  AlamofireImage: 34a2d90b0e5fe6a5605f85ae4b7b01e784c60192
+  MapboxCommon: 019dac381fcb3aab115b5d488593261c810253ad
+  MapboxCoreMaps: 418b6e02464c00d7227e778164f6ca67755ae6a1
+  MapboxMaps: fc490ab5b8df6f74a82d35c56bc2ea4d576ad4ee
+  MapboxMobileEvents: f7f3e8daeb4b83688ae62a4172dce79169a97233
+  Realm: 5d6f84e3f65d4efa204d46b461e5bbbbbbf84c6c
+  RealmSwift: 9022754b93fad23e1ffc950c93574c5b7899bd51
+  SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  Turf: d8d52444483c968cf2d65b8b54640f8faf4dda03
+
+PODFILE CHECKSUM: a9e48d85241e91d744ac571c705a9eb0b47b945c
+
+COCOAPODS: 1.11.2

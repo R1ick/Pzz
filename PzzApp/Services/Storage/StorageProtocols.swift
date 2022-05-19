@@ -19,7 +19,7 @@ protocol UserInfoStorable {
 }
 
 protocol HistoryStorable {
-    func savetoHistory(_ order: Order)
+    func saveToHistory(_ order: Order)
     func deleteFromHistory(_ order: Order)
 }
 
@@ -31,6 +31,6 @@ protocol AdressStorable {
     func saveAdressFor(_ user: User, adress: Adress)
     func deleteAdress(adress: Adress)
     func editAdress(adress: Adress, with: Adress) 
-    func changeCurrent(with adress: Adress)
+    func changeCurrentAdress(with adress: Adress, for user: User)
     func isAdressesMatch(_ one: Adress, _ two: Adress) -> Bool
 }

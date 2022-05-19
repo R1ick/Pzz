@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ALS Malina Regular.ttf">
+            <string>ALSMalina</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iLy-GD-1a9" customClass="ProductCell" customModule="PzzApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="367" height="376"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iLy-GD-1a9" id="CGf-tH-Sby">
+                <rect key="frame" x="0.0" y="0.0" width="367" height="376"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="5" translatesAutoresizingMaskIntoConstraints="NO" id="n60-05-9AO">
+                        <rect key="frame" x="33.5" y="15" width="300" height="130"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="130" id="0M0-p7-Wg3"/>
+                            <constraint firstAttribute="width" constant="300" id="4TQ-sS-Zfe"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhW-Q4-RuE">
+                        <rect key="frame" x="35" y="153" width="297" height="34"/>
+                        <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="24"/>
+                        <color key="textColor" red="1" green="0.32156863810000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnv-Ff-lp4">
+                        <rect key="frame" x="5" y="145" width="357" height="1"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="nMX-0o-RcP"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="epc-X6-t98">
+                        <rect key="frame" x="35" y="192" width="272" height="173"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="61" id="Jg5-JJ-3ih">
+                                <rect key="frame" x="0.0" y="0.0" width="271.5" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="yTc-Xg-RTj">
+                                        <rect key="frame" x="0.0" y="0.0" width="70.5" height="68"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Большая" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMs-Wg-qd0">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="17"/>
+                                                <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="12"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Lf-An-IlK">
+                                                <rect key="frame" x="0.0" y="17" width="70.5" height="34"/>
+                                                <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="24"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0,8-0,9 кг" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7n2-h2-sWd">
+                                                <rect key="frame" x="0.0" y="51" width="57.5" height="17"/>
+                                                <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="12"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cf7-16-NMw">
+                                        <rect key="frame" x="131.5" y="18.5" width="140" height="31"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.49981891556291391" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="SgI-nw-RZb"/>
+                                            <constraint firstAttribute="width" constant="140" id="pMT-x2-unS"/>
+                                        </constraints>
+                                        <color key="tintColor" red="1" green="0.32156863810000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="В корзину">
+                                            <fontDescription key="titleFontDescription" name="ALSMalina" family="ALS Malina" pointSize="18"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="bigButtonTapped" destination="iLy-GD-1a9" eventType="touchUpInside" id="GMc-df-cRz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Cf7-16-NMw" secondAttribute="trailing" id="Qex-o2-zsI"/>
+                                </constraints>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="43" id="qdm-lN-ZRc">
+                                <rect key="frame" x="0.0" y="78" width="272" height="68"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tF1-vA-x1j">
+                                        <rect key="frame" x="0.0" y="0.0" width="89" height="68"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Стандартная" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhr-jT-5PQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="89" height="17"/>
+                                                <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="12"/>
+                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CcF-aL-4IH">
+                                                <rect key="frame" x="0.0" y="17" width="70.5" height="34"/>
+                                                <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="24"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0,6-0,7 кг" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TyJ-Dm-Ajc">
+                                                <rect key="frame" x="0.0" y="51" width="57" height="17"/>
+                                                <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="12"/>
+                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acc-th-vYH">
+                                        <rect key="frame" x="132" y="18.5" width="140" height="31"/>
+                                        <color key="backgroundColor" white="0.67000000000000004" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="31" id="3hm-mC-Fam"/>
+                                            <constraint firstAttribute="width" constant="140" id="Ozb-XM-mFe"/>
+                                        </constraints>
+                                        <color key="tintColor" red="1" green="0.32156863810000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="В корзину">
+                                            <fontDescription key="titleFontDescription" name="ALSMalina" family="ALS Malina" pointSize="18"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="standartButtonTapped" destination="iLy-GD-1a9" eventType="touchUpInside" id="9LE-eu-9ie"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="acc-th-vYH" secondAttribute="trailing" id="OI5-1D-V7f"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Состав" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKG-cE-dDl">
+                                <rect key="frame" x="0.0" y="156" width="45.5" height="17"/>
+                                <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="12"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailingMargin" secondItem="epc-X6-t98" secondAttribute="trailing" constant="40" id="Dha-hi-LBz"/>
+                    <constraint firstItem="hhW-Q4-RuE" firstAttribute="top" secondItem="bnv-Ff-lp4" secondAttribute="bottom" constant="7" id="I06-Fb-1y1"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="hhW-Q4-RuE" secondAttribute="trailing" constant="15" id="IWU-TV-0m6"/>
+                    <constraint firstItem="epc-X6-t98" firstAttribute="top" secondItem="hhW-Q4-RuE" secondAttribute="bottom" constant="5" id="T1p-gC-4yz"/>
+                    <constraint firstItem="bnv-Ff-lp4" firstAttribute="leading" secondItem="CGf-tH-Sby" secondAttribute="leading" constant="5" id="gMw-EL-QW2"/>
+                    <constraint firstItem="bnv-Ff-lp4" firstAttribute="top" secondItem="n60-05-9AO" secondAttribute="bottom" id="lcd-xp-OeY"/>
+                    <constraint firstItem="n60-05-9AO" firstAttribute="centerX" secondItem="CGf-tH-Sby" secondAttribute="centerX" id="mlQ-pG-oGA"/>
+                    <constraint firstItem="n60-05-9AO" firstAttribute="top" secondItem="CGf-tH-Sby" secondAttribute="top" constant="15" id="u3t-FV-2mX"/>
+                    <constraint firstItem="epc-X6-t98" firstAttribute="bottom" secondItem="CGf-tH-Sby" secondAttribute="bottomMargin" id="xO4-Fo-btJ"/>
+                    <constraint firstItem="epc-X6-t98" firstAttribute="leading" secondItem="CGf-tH-Sby" secondAttribute="leadingMargin" constant="15" id="xrg-Fs-XAO"/>
+                    <constraint firstItem="hhW-Q4-RuE" firstAttribute="leading" secondItem="CGf-tH-Sby" secondAttribute="leadingMargin" constant="15" id="yT2-9c-HPv"/>
+                    <constraint firstAttribute="trailing" secondItem="bnv-Ff-lp4" secondAttribute="trailing" constant="5" id="z3S-Tk-MsX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="anonceLabel" destination="zKG-cE-dDl" id="3rG-U4-Ixa"/>
+                <outlet property="bigBasketButton" destination="Cf7-16-NMw" id="H3K-VI-NiA"/>
+                <outlet property="bigDescriptionLabel" destination="IMs-Wg-qd0" id="kVe-FE-XXl"/>
+                <outlet property="bigPriceLabel" destination="4Lf-An-IlK" id="gDI-Fn-PO6"/>
+                <outlet property="bigWeightLabel" destination="7n2-h2-sWd" id="BFc-Ki-1DU"/>
+                <outlet property="mediumPriceLabel" destination="CcF-aL-4IH" id="ONz-XV-5IP"/>
+                <outlet property="mediumStack" destination="qdm-lN-ZRc" id="HCv-bR-UaY"/>
+                <outlet property="mediumWeightLabel" destination="TyJ-Dm-Ajc" id="Uem-pf-mcl"/>
+                <outlet property="productImageView" destination="n60-05-9AO" id="mJ6-2M-sno"/>
+                <outlet property="productName" destination="hhW-Q4-RuE" id="ESA-Tm-sTL"/>
+                <outlet property="standartBasketButton" destination="acc-th-vYH" id="49f-ga-4BG"/>
+            </connections>
+            <point key="canvasLocation" x="-403.62318840579712" y="46.875"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="5" width="200" height="200"/>
+    </resources>
+</document>

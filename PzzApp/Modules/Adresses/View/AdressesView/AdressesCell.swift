@@ -6,15 +6,18 @@
 //
 
 import SwiftUI
+import RealmSwift
 
-struct AdressesCell: View {
+struct AddressCell: View {
+    
+    @ObservedRealmObject var adress: Adress
+    
+    var selected: Bool = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct AdressesCell_Previews: PreviewProvider {
-    static var previews: some View {
-        AdressesCell()
+        SettingsCell(title: "\(adress.street), \(adress.building) - \(adress.flat)", selected: selected)
+            .listRowBackground(Color(#colorLiteral(red: 1, green: 0.6389834881, blue: 0.4692313671, alpha: 1).withAlphaComponent(0.5)))
+            .padding(.leading)
+            .frame(height: 90)
     }
 }

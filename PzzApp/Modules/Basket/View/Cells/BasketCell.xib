@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ALS Malina Regular.ttf">
+            <string>ALSMalina</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="94" id="KGk-i7-Jjw" customClass="BasketCell" customModule="PzzApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="94"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" axis="vertical" alignment="top" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="mD7-5J-kGf">
+                        <rect key="frame" x="16" y="16" width="113.5" height="62"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1f-Bp-RjB">
+                                <rect key="frame" x="0.0" y="0.0" width="53" height="31"/>
+                                <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="18"/>
+                                <color key="textColor" red="1" green="0.32156863810000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ss7-vK-uUD">
+                                <rect key="frame" x="0.0" y="45" width="35.5" height="17"/>
+                                <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="12"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adX-2z-Uzb">
+                        <rect key="frame" x="257" y="35.5" width="47" height="23"/>
+                        <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="16"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="v0J-V7-YkY">
+                        <rect key="frame" x="139.5" y="35" width="107.5" height="24"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3wd-hN-Pud">
+                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="OLC-hJ-7PR"/>
+                                    <constraint firstAttribute="width" secondItem="3wd-hN-Pud" secondAttribute="height" multiplier="1:1" id="prQ-PP-Lbq"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="-">
+                                    <fontDescription key="titleFontDescription" name="ALSMalina" family="ALS Malina" pointSize="24"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="minusButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9M0-0s-fFr"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53Q-dk-iFj">
+                                <rect key="frame" x="34" y="0.0" width="39.5" height="24"/>
+                                <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="16"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KgV-nn-9wQ">
+                                <rect key="frame" x="83.5" y="0.0" width="24" height="24"/>
+                                <color key="backgroundColor" systemColor="linkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="3KF-cx-03c"/>
+                                    <constraint firstAttribute="width" secondItem="KgV-nn-9wQ" secondAttribute="height" multiplier="1:1" id="M4N-7J-YnN"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="+">
+                                    <fontDescription key="titleFontDescription" name="ALSMalina" family="ALS Malina" pointSize="24"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="plusButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="78e-R2-xVM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="107.5" id="b1v-2z-DwO"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="mD7-5J-kGf" secondAttribute="bottom" constant="16" id="193-zd-lbm"/>
+                    <constraint firstItem="v0J-V7-YkY" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2Ju-HB-KBI"/>
+                    <constraint firstItem="mD7-5J-kGf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="2VQ-vT-pHS"/>
+                    <constraint firstItem="v0J-V7-YkY" firstAttribute="leading" secondItem="mD7-5J-kGf" secondAttribute="trailing" constant="10" id="BAg-Ny-WcP"/>
+                    <constraint firstAttribute="trailing" secondItem="adX-2z-Uzb" secondAttribute="trailing" constant="16" id="RGS-Fk-Che"/>
+                    <constraint firstItem="adX-2z-Uzb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="akQ-g3-ptI"/>
+                    <constraint firstItem="mD7-5J-kGf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="sYG-JV-fdb"/>
+                    <constraint firstItem="adX-2z-Uzb" firstAttribute="leading" secondItem="v0J-V7-YkY" secondAttribute="trailing" constant="10" id="yis-c3-joX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="countLabel" destination="53Q-dk-iFj" id="mth-iJ-Mf1"/>
+                <outlet property="minusButton" destination="3wd-hN-Pud" id="36c-CG-quf"/>
+                <outlet property="nameLabel" destination="m1f-Bp-RjB" id="uCm-Sy-Mbs"/>
+                <outlet property="plusButton" destination="KgV-nn-9wQ" id="auc-7Q-reb"/>
+                <outlet property="priceLabel" destination="adX-2z-Uzb" id="piK-Hv-8Kc"/>
+                <outlet property="sizeLabel" destination="Ss7-vK-uUD" id="dHq-d5-eMk"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="96.428571428571431"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

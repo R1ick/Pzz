@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "onboarder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/JemAlvarez/onboarder",
+      "state" : {
+        "branch" : "master",
+        "revision" : "1eb9cd71315ff430a72f28a77d20a8cc0cf7f6ef"
+      }
+    }
+  ],
+  "version" : 2
+}

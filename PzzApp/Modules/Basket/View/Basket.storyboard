@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IJE-nD-9Ug">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="ALS Malina Regular.ttf">
+            <string>ALSMalina</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--BasketVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="basket" id="Y6W-OH-hqX" customClass="BasketVC" customModule="PzzApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cu-WQ-Ufc" customClass="CustomNavBar" customModule="PzzApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="90" id="mgD-9K-aeq"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ваша корзина пуста." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWw-9q-KnI">
+                                <rect key="frame" x="16" y="156" width="235" height="28.5"/>
+                                <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="EpM-uI-9if">
+                                <rect key="frame" x="0.0" y="200.5" width="414" height="581.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="vjh-cB-Lqf" customClass="BasketCell" customModule="PzzApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vjh-cB-Lqf" id="71N-ci-KQf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="poY-Cc-GbP"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="ozX-Pj-2SX"/>
+                                </connections>
+                            </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="59" translatesAutoresizingMaskIntoConstraints="NO" id="0yk-GF-OSH">
+                                <rect key="frame" x="16" y="106" width="382" height="22"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Оформление заказа" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9aU-Pk-Daa">
+                                        <rect key="frame" x="0.0" y="0.0" width="277" height="22"/>
+                                        <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yWX-aW-Cyp">
+                                        <rect key="frame" x="336" y="0.0" width="46" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="WhM-WD-R7f"/>
+                                            <constraint firstAttribute="width" secondItem="yWX-aW-Cyp" secondAttribute="height" multiplier="1:1" constant="24" id="j35-6N-tuz"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.89411771299999998" green="0.53725492949999998" blue="0.22745099660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="gearshape" catalog="system"/>
+                                        <connections>
+                                            <action selector="orderSettingsTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pGy-QJ-4tV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ukd-ph-IdK">
+                                <rect key="frame" x="0.0" y="782" width="414" height="80"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tar-ov-Z27">
+                                        <rect key="frame" x="16" y="16" width="382" height="44"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="255" verticalHuggingPriority="251" text="Итого:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZrN-4S-jaJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="82.5" height="44"/>
+                                                <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grq-MQ-oiO">
+                                                <rect key="frame" x="92.5" y="0.0" width="147.5" height="44"/>
+                                                <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="24"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12K-OC-z5p">
+                                                <rect key="frame" x="250" y="0.0" width="132" height="44"/>
+                                                <color key="backgroundColor" red="0.97254908080000002" green="0.64313727620000005" blue="0.57254904510000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="132" id="8Iz-ip-h1q"/>
+                                                </constraints>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Заказать">
+                                                    <fontDescription key="titleFontDescription" name="ALSMalina" family="ALS Malina" pointSize="18"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="makeOrderButtonTapped" destination="Y6W-OH-hqX" eventType="touchUpInside" id="ECW-Nf-bCb"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="tar-ov-Z27" secondAttribute="trailing" constant="16" id="0DI-tl-Imc"/>
+                                    <constraint firstItem="tar-ov-Z27" firstAttribute="leading" secondItem="Ukd-ph-IdK" secondAttribute="leading" constant="16" id="AbS-7k-750"/>
+                                    <constraint firstItem="tar-ov-Z27" firstAttribute="top" secondItem="Ukd-ph-IdK" secondAttribute="top" constant="16" id="IzE-AM-XKN"/>
+                                    <constraint firstAttribute="bottom" secondItem="tar-ov-Z27" secondAttribute="bottom" constant="20" symbolic="YES" id="RdO-DO-3ge"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rWw-9q-KnI" firstAttribute="top" secondItem="0yk-GF-OSH" secondAttribute="bottom" constant="28" id="879-82-Ksv"/>
+                            <constraint firstItem="0yk-GF-OSH" firstAttribute="top" secondItem="9cu-WQ-Ufc" secondAttribute="bottom" constant="16" id="FTy-cL-G0Y"/>
+                            <constraint firstItem="EpM-uI-9if" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="G3d-ym-gmn"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Ukd-ph-IdK" secondAttribute="trailing" id="GcB-86-57R"/>
+                            <constraint firstItem="EpM-uI-9if" firstAttribute="top" secondItem="rWw-9q-KnI" secondAttribute="bottom" constant="16" id="KzS-hu-Sgw"/>
+                            <constraint firstItem="Ukd-ph-IdK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="LEl-rI-zcg"/>
+                            <constraint firstItem="EpM-uI-9if" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="O76-8n-T7i"/>
+                            <constraint firstItem="Ukd-ph-IdK" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" id="Pn7-G6-sHy"/>
+                            <constraint firstItem="Ukd-ph-IdK" firstAttribute="top" secondItem="EpM-uI-9if" secondAttribute="bottom" id="X6T-3v-50J"/>
+                            <constraint firstItem="9cu-WQ-Ufc" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="cS1-xG-FMp"/>
+                            <constraint firstItem="9cu-WQ-Ufc" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="e30-IJ-yR1"/>
+                            <constraint firstItem="rWw-9q-KnI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="ePt-wr-h6U"/>
+                            <constraint firstItem="0yk-GF-OSH" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="eYX-JC-3rS"/>
+                            <constraint firstItem="9cu-WQ-Ufc" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="fEG-Gf-Lgt"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="EpM-uI-9if" secondAttribute="bottom" constant="80" id="m1C-bO-r0b"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="0yk-GF-OSH" secondAttribute="trailing" constant="16" id="ov7-En-f4w"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Jba-a1-pDb"/>
+                    <connections>
+                        <outlet property="headerView" destination="9cu-WQ-Ufc" id="qSW-QL-4lR"/>
+                        <outlet property="mainOrderLabel" destination="rWw-9q-KnI" id="pLE-wP-wQd"/>
+                        <outlet property="makeOrderButton" destination="12K-OC-z5p" id="kPM-LO-COp"/>
+                        <outlet property="settingsButton" destination="yWX-aW-Cyp" id="NXw-z1-WB6"/>
+                        <outlet property="tableView" destination="EpM-uI-9if" id="oy5-Jy-Cgb"/>
+                        <outlet property="totalLabel" destination="grq-MQ-oiO" id="dRX-49-sJz"/>
+                        <outlet property="totalView" destination="Ukd-ph-IdK" id="S9k-mk-DCL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="47.544642857142854"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yR4-Xf-Nz4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IJE-nD-9Ug" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="apF-oq-v7m">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="vY2-rt-Zcj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VP7-SI-uab" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="47.544642857142854"/>
+        </scene>
+    </scenes>
+    <designables>
+        <designable name="9cu-WQ-Ufc">
+            <size key="intrinsicContentSize" width="-1" height="44"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

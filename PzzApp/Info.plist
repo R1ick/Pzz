@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.666216083735-0fl7qpe50kbha74ikbij2j8deuf1k8ca</string>
+			</array>
+		</dict>
+	</array>
+	<key>MBXAccessToken</key>
+	<string>pk.eyJ1IjoibWFybG90IiwiYSI6ImNrdXM5ZTVtYTA4NTEyb2x0azl6MGVpazUifQ.OsjqJA8KCdnWzrIGba8o7Q</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ALS Malina Regular.ttf</string>
+	</array>
+	<key>UIApplicationSceneManifest</key>
+	<dict>
+		<key>UIApplicationSupportsMultipleScenes</key>
+		<false/>
+		<key>UISceneConfigurations</key>
+		<dict>
+			<key>UIWindowSceneSessionRoleApplication</key>
+			<array>
+				<dict>
+					<key>UISceneConfigurationName</key>
+					<string>Default Configuration</string>
+					<key>UISceneDelegateClassName</key>
+					<string>$(PRODUCT_MODULE_NAME).SceneDelegate</string>
+					<key>UISceneStoryboardFile</key>
+					<string>Launch</string>
+				</dict>
+			</array>
+		</dict>
+	</dict>
+</dict>
+</plist>

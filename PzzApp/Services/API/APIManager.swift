@@ -11,8 +11,12 @@ import SwiftyJSON
 
 protocol Fetch {
     var serverPath: URL { get }
-    var products: URL { get }
-    func fetchData(with url: URL, completion: @escaping ([JSON]) -> ())
+    var pizzas: URL { get }
+    var snacks: URL { get }
+    var deserts: URL { get }
+    var drinks: URL { get }
+    var sauces: URL { get }
+    func fetchData(completion: @escaping ([[JSON]]) -> ())
 }
 
 final class APIManager: Fetch {
@@ -21,18 +25,39 @@ final class APIManager: Fetch {
     
     static let shared = APIManager()
     
-    let serverPath = URL(string: "http://localhost:3004")!
-    let products = URL(string: "http://localhost:3004/products")!
+    let serverPath = URL(string: "https://pzz.by/api/v1")!
+    lazy var pizzas = URL(string: "\(serverPath)/pizzas")!
+    lazy var snacks = URL(string: "\(serverPath)/snacks")!
+    lazy var deserts = URL(string: "\(serverPath)/deserts")!
+    lazy var drinks = URL(string: "\(serverPath)/drinks")!
+    lazy var sauces = URL(string: "\(serverPath)/sauces")!
+    lazy var products = [pizzas, snacks, deserts, drinks, sauces]
+    var json = [[JSON]]()
     
-    func fetchData(with url: URL, completion: @escaping ([JSON]) -> ()) {
-        AF.request(url).responseJSON { response in
-            switch response.result {
-            case .success(let data):
-                let data = JSON(data).arrayValue
-                completion(data)
-            case .failure(let error):
-                print(error)
+    func fetchData(completion: @escaping ([[JSON]]) -> ()) {
+        for (index, product) in products.enumerated() {
+            getProducts(with: product) { [unowned self] array in
+                json.append(array)
+                print("#", index)
+                if index == products.count - 1 {
+                    completion(json)
+                    print("###", json)
+                }
             }
         }
+//        print("count", products.count)
+    }
+    
+    func getProducts(with url: URL, completion: @escaping ([JSON]) -> ()) {
+        AF.request(url)
+            .responseData { response in
+                switch response.result {
+                case .success(let data):
+                    let data = JSON(data)["response"]["data"].arrayValue
+                    completion(data)
+                case .failure(_):
+                    return
+                }
+            }
     }
 }

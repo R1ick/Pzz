@@ -22,6 +22,7 @@ final class CurrentAdress: ObservableObject {
         guard let info = Global.currentUser.userInfo else { return }
         let adresses = info.addresses
         for adress in adresses {
+            print("user", Global.currentUser)
             if adress.id == info.currentAdressID {
                 self.adress = adress
             }
