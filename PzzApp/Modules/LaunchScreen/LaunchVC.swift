@@ -26,7 +26,7 @@ class LaunchVC: BaseViewController {
         super.viewDidLoad()
         
         startTimers()
-//        print("url", realm.configuration.fileURL)
+        print("url", realm.configuration.fileURL)
     }
     
     private func startTimers() {
@@ -44,27 +44,27 @@ class LaunchVC: BaseViewController {
     }
     
     @objc private func showLogin() {
-//        #if DEBUG
-//        let main = MainWrapperViewController(nibName: nil, bundle: nil)
-//        main.user = realm.objects(User.self).first
-//        sceneDelegate.window?.rootViewController = main
-//        #else
+        let loginStoryboard = UIStoryboard(name: "Login", bundle: .main)
+        let login = loginStoryboard.instantiateViewController(withIdentifier: "login")
+        
         if let isLogin = UserDefaults.standard.value(forKey: "isLogin") as? Bool {
             if isLogin {
                 let main = MainWrapperViewController(nibName: nil, bundle: nil)
-                main.user = realm.objects(User.self).first
-                sceneDelegate.window?.rootViewController = main
+                let users = realm.objects(User.self)
+                for user in users {
+                    if user.login == KeychainHelper.username {
+                        main.user = user
+                        sceneDelegate.window?.rootViewController = main
+                        return
+                    }
+                }
+                self.navigationController?.show(login, sender: nil)
             } else {
-                let nextStoryboard = UIStoryboard(name: "Login", bundle: .main)
-                let login = nextStoryboard.instantiateViewController(withIdentifier: "login")
                 self.navigationController?.show(login, sender: nil)
             }
         } else {
-            let nextStoryboard = UIStoryboard(name: "Login", bundle: .main)
-            let login = nextStoryboard.instantiateViewController(withIdentifier: "login")
             self.navigationController?.show(login, sender: nil)
         }
-//        #endif
         animationTimer?.invalidate()
         segueTimer?.invalidate()
     }

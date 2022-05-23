@@ -23,4 +23,15 @@ class BaseViewController: UIViewController {
         
         present(alert, animated: true)
     }
+    
+    func convertePzzToRealmAddress(_ address: PzzAddress) -> Adress {
+        let adr = Adress()
+        adr.street = address.street?.title ?? ""
+        adr.building = address.house?.title ?? ""
+        adr.entrance = address.entrance ?? ""
+        adr.stage = address.floor ?? ""
+        adr.flat = address.flat ?? ""
+        adr.buzzer = address.intercom ?? ""
+        return adr
+    }
 }

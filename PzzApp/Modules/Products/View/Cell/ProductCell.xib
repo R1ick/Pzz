@@ -166,7 +166,6 @@
             <connections>
                 <outlet property="anonceLabel" destination="zKG-cE-dDl" id="3rG-U4-Ixa"/>
                 <outlet property="bigBasketButton" destination="Cf7-16-NMw" id="H3K-VI-NiA"/>
-                <outlet property="bigDescriptionLabel" destination="IMs-Wg-qd0" id="kVe-FE-XXl"/>
                 <outlet property="bigPriceLabel" destination="4Lf-An-IlK" id="gDI-Fn-PO6"/>
                 <outlet property="bigWeightLabel" destination="7n2-h2-sWd" id="BFc-Ki-1DU"/>
                 <outlet property="mediumPriceLabel" destination="CcF-aL-4IH" id="ONz-XV-5IP"/>

@@ -95,9 +95,7 @@ extension BasketVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] _, _, _ in
             guard let food = self?.foods[indexPath.row] else { return }
-            try! realm.write {
-                realm.delete(food)
-            }
+            self?.storage.delete(food)
         }
         let label = UILabel()
         label.text = "Удалить"
@@ -191,17 +189,15 @@ extension BasketVC {
             switch change {
             case .initial(_):
                 return
-            case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
+            case .update(_, deletions: let deletions, insertions: let insertions, modifications: _):
                 if !insertions.isEmpty {
+                    guard let index = insertions.first else { return }
+                    self?.tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
                     self?.updateTotalAmout()
-                    self?.tableView.insertRows(at:[IndexPath(item: insertions.first ?? 0, section: 0)], with: .automatic)
-                }
-                if !modifications.isEmpty {
-                    self?.updateTotalAmout()
-                    self?.tableView.reloadRows(at: [IndexPath(item: modifications.first ?? 0, section: 0)], with: .automatic)
                 }
                 if !deletions.isEmpty {
-                    self?.tableView.deleteRows(at: [IndexPath(item: deletions.first ?? 0, section: 0)], with: .fade)
+                    guard let index = deletions.first else { return }
+                    self?.tableView.deleteRows(at: [IndexPath(row: index, section: 0)], with: .fade)
                     self?.updateTotalAmout()
                 }
             case .error(_):

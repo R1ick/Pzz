@@ -8,11 +8,10 @@
 import UIKit
 import RealmSwift
 
-class ProductCell: UITableViewCell {
+final class ProductCell: UITableViewCell {
 
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var productName: UILabel!
-    @IBOutlet weak var bigDescriptionLabel: UILabel!
     @IBOutlet weak var bigPriceLabel: UILabel!
     @IBOutlet weak var anonceLabel: UILabel!
     @IBOutlet weak var mediumPriceLabel: UILabel!
@@ -22,15 +21,31 @@ class ProductCell: UITableViewCell {
     @IBOutlet weak var standartBasketButton: UIButton!
     @IBOutlet weak var mediumStack: UIStackView!
     
+    var product: Product?
+    var productType: ProductType = .pizza
+    
     private let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+    private let apiManager: Fetch = APIManager()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        productImageView.image = nil
+        productName.text = ""
+        bigPriceLabel.text = ""
+        bigWeightLabel.text = ""
+        anonceLabel.text = ""
+        mediumStack.isHidden = false
+        mediumPriceLabel.text = ""
+        mediumWeightLabel.text = ""
+    }
     
     @IBAction func bigButtonTapped() {
         let bigFood = BasketElement()
         bigFood.name = productName.text ?? "###"
         bigFood.size = "Большая"
         bigFood.count = 1
-        bigFood.onePrice = refactorPrice(string: bigPriceLabel.text ?? "1.0") ?? 1.0
-        bigFood.price = refactorPrice(string: bigPriceLabel.text ?? "1.0") ?? 1.0
+        bigFood.onePrice = refactorPrice(string: bigPriceLabel.text)
+        bigFood.price = refactorPrice(string: bigPriceLabel.text)
         StorageService.shared.save(bigFood)
         feedbackGenerator.impactOccurred()
     }
@@ -39,27 +54,56 @@ class ProductCell: UITableViewCell {
         mediumFood.name = productName.text ?? "###"
         mediumFood.size = "Стандартная"
         mediumFood.count = 1
-        mediumFood.onePrice = refactorPrice(string: mediumPriceLabel.text ?? "1.0") ?? 1.0
-        mediumFood.price = refactorPrice(string: mediumPriceLabel.text ?? "1.0") ?? 1.0
+        mediumFood.onePrice = refactorPrice(string: mediumPriceLabel.text)
+        mediumFood.price = refactorPrice(string: mediumPriceLabel.text)
         StorageService.shared.save(mediumFood)
         feedbackGenerator.impactOccurred()
     }
     
-    func configureCell() {
+    func setupUI() {
         [bigBasketButton, standartBasketButton].forEach {
             $0?.layer.cornerRadius = 10
             $0?.setTitleColor(.green, for: .selected)
         }
     }
     
-    private func refactorPrice(string: String) -> Double? {
-        guard let index = string.firstIndex(of: ",") else { return nil }
-        let str1 = string.substring(to: index)
-        let str2 = string.substring(from: index).dropFirst()
-        let newString = "\(str1).\(str2)"
-        let newPrice = Double(newString)
-        return newPrice!
+    func configure() {
+        guard let product = product, let url = product.photoSmall else { return }
+        apiManager.requestFoodImage(url: url, cell: self)
+        anonceLabel.text = product.anonce
+        bigWeightLabel.text = product.bigWeight
+        mediumWeightLabel.text = product.mediumWeight
+        let cf = 10_000.0
+        switch productType {
+        case .pizza, .snacks:
+            productName.text = product.title
+            mediumStack.isHidden = false
+            if let big = product.bigPrice {
+                let price = big / cf
+                bigPriceLabel.text = String(format: "%.2f", price)
+            }
+        default:
+            productName.text = product.title
+            if let big = product.price {
+                let price = Double(big) / cf
+                bigPriceLabel.text = String(format: "%.2f", price)
+            }
+            mediumStack.isHidden = true
+        }
+        if let medium = product.mediumPrice {
+            let price = medium / cf
+            if price < 1 {
+                mediumStack.isHidden = true
+            } else {
+                mediumPriceLabel.text = String(format: "%.2f", price)
+            }
+        } else {
+            mediumStack.isHidden = true
+        }
+    }
+    
+    private func refactorPrice(string: String?) -> Double {
+        guard let string = string, let price = Double(string) else { return  0.0 }
+        return price
     }
 }
-
-

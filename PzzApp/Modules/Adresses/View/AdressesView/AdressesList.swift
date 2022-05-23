@@ -15,8 +15,10 @@ struct AdressesList: View {
 
     @State var alertPresent: Bool = false
     @State var isActive: Bool = false
+    @State var addresses: [Adress] = []
     
-    let storage: AdressStorable = StorageService.shared
+    private let storage: AdressStorable = StorageService.shared
+    private let apiManager: Fetch = APIManager()
     
     var body: some View {
         List {
@@ -25,7 +27,7 @@ struct AdressesList: View {
                     TextMalina("Добавить адрес", size: 20, color: .orange)
                 }
             }
-            if info.addresses.count  == 0 {
+            if addresses.count  == 0 {
                 HStack {
                     Spacer()
                     VStack {
@@ -38,7 +40,7 @@ struct AdressesList: View {
                 }
             } else {
                 Section("Адреса") {
-                    ForEach(info.addresses) { item in
+                    ForEach(addresses) { item in
                         ZStack {
                             NavigationLink(destination: AddAdressView(street: item.street,
                                                                       building: item.building,
@@ -71,6 +73,7 @@ struct AdressesList: View {
                                     return
                                 } else {
                                     storage.deleteAdress(adress: item)
+                                    deleteAddress(item)
                                 }
                             } label: {
                                 TextMalina("Удалить", size: 12)
@@ -95,12 +98,78 @@ struct AdressesList: View {
                     }
                 }
                 .onAppear {
-                    print("SELECTED", selected.adress)
                     isActive = false
                     UITableView.appearance().backgroundColor = .clear
+//                    getProfileInfo()
                 }
             }
         }
+        .padding(.bottom, 70)
+        .onAppear {
+            getProfileInfo()
+        }
+    }
+    
+    func getProfileInfo() {
+        apiManager.getProfileInfo { profile, error in
+            if let error = error {
+                print(error)
+            }
+            if let profile = profile, let addresses = profile.addresses {
+                if addresses.count == 0 {
+                    for adress in info.addresses {
+                        storage.deleteAdress(adress: adress)
+                    }
+                }
+                for address in addresses {
+                    let converted = convertePzzToRealmAddress(address)
+                    self.addresses.append(converted)
+                }
+            }
+        }
+    }
+    
+    func deleteAddress(_ adress: Adress) {
+        apiManager.getProfileInfo { profile, error in
+            if let error = error {
+                print(error)
+            }
+            if let profile = profile, let addresses = profile.addresses {
+                for address in addresses {
+                    let converted = convertePzzToRealmAddress(address)
+                    if storage.isAdressesMatch(converted, adress) {
+                        let id = address.id ?? 0
+                        apiManager.deleteAddress(id: id) { string, error in
+                            if let _ = error { print(error) }
+                            if let string = string, let index = getIndexOf(address: adress) {
+                                self.addresses.remove(at: index)
+                                print(string)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func getIndexOf(address: Adress) -> Int? {
+        for (index, adr) in addresses.enumerated() {
+            if storage.isAdressesMatch(address, adr) {
+                return index
+            }
+        }
+        return nil
+    }
+    
+    private func convertePzzToRealmAddress(_ address: PzzAddress) -> Adress {
+        let adr = Adress()
+        adr.street = address.street?.title ?? ""
+        adr.building = address.house?.title ?? ""
+        adr.entrance = address.entrance ?? ""
+        adr.stage = address.floor ?? ""
+        adr.flat = address.flat ?? ""
+        adr.buzzer = address.intercom ?? ""
+        return adr
     }
 }
 

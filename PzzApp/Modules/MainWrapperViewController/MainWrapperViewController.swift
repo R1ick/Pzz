@@ -8,19 +8,15 @@
 import UIKit
 import RealmSwift
 
-class MainWrapperViewController: BaseViewController {
+final class MainWrapperViewController: BaseViewController {
 
     var user: User?
     
     private lazy var tab = CustomTabBarController(nibName: nil, bundle: nil)
+    private let networkManager: Fetch = APIManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        #if DEBUG
-//        user = realm.objects(User.self).first
-//        Global.currentUser = self.user!
-//        #endif
-        
         setupTab()
         requestProducts()
     }
@@ -40,12 +36,8 @@ class MainWrapperViewController: BaseViewController {
         guard let main = tab.viewControllers?.first,
               let main = main as? ProductsVC
         else { return }
-        let networkManager: Fetch = APIManager.shared
        
         let storage = StorageService.shared
-        if user?.userInfo == nil || user?.userInfo?.orderSettings == nil {
-            storage.createUserInfo(for: self.user!)
-        }
         
         main.user = self.user
         storage.user = self.user
@@ -53,9 +45,16 @@ class MainWrapperViewController: BaseViewController {
         
         print("#URL", Global.currentUser)
         
-        networkManager.fetchData() { products in
-            main.products = products
-            main.tableView.reloadData()
+        Task {
+            await networkManager.getProducts() { [unowned self] products, error in
+                if let error = error { debugPrint(error) }
+                if let products = products {
+                    main.products = products
+                    DispatchQueue.main.async {
+                        main.tableView.reloadData()
+                    }
+                }
+            }
         }
     }
 

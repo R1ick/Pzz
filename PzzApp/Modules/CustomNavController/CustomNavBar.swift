@@ -15,6 +15,8 @@ import UIKit
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet var contentView: UIView!
     
+    private let apiManager: Fetch = APIManager()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -31,18 +33,23 @@ import UIKit
         self.addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        setupDeliveryTime()
     }
     
     private func setupUI() {
-        titleLabel.font = Global.mainFontWithSize(size: 48)
-        titleLabel.text = "пицца\nлисицца"
+        titleLabel.font = Global.mainFontWithSize(size: 34)
+        titleLabel.text = "755-66-55"
         titleLabel.textAlignment = .center
         titleLabel.textColor = .white
-        let attributes = [
-            NSAttributedString.Key.foregroundColor : UIColor.white,
-            NSAttributedString.Key.strokeColor : UIColor.black,
-            NSAttributedString.Key.strokeWidth : -6.0
-        ] as [NSAttributedString.Key : Any]
-        titleLabel.attributedText = NSMutableAttributedString(string: "пицца\nлисицца", attributes: attributes)
+    }
+    
+    private func setupDeliveryTime() {
+        apiManager.getDeliveryTime { [weak self] time, error in
+            if let _ = error { return }
+            if let time = time {
+                self?.deliveryTimeLabel.text = time
+                self?.setupUI()
+            }
+        }
     }
 }

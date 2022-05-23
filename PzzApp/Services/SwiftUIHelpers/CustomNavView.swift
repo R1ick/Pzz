@@ -12,7 +12,11 @@ struct CustomNavView: View {
         self.title = title
     }
     
+    private let apiManager: Fetch = APIManager()
+    
     var title: String
+    
+    @State var delivery: String = ""
     
     var body: some View {
         ZStack {
@@ -24,13 +28,25 @@ struct CustomNavView: View {
                 Spacer()
                 TextMalina(title, size: 30, color: .white)
                 Spacer()
-                TextMalina("45", size: 30, color: .white)
+                TextMalina(delivery, size: 30, color: .white)
                     .padding()
             }
             .padding(.top)
             .padding(.top)
         }
         .frame(height: 90)
+        .onAppear {
+            setupDeliveryTime()
+        }
+    }
+    
+    func setupDeliveryTime() {
+        apiManager.getDeliveryTime { time, error in
+            if let _ = error { return }
+            if let time = time {
+                delivery = time
+            }
+        }
     }
 }
 struct CustomNavView_Previews: PreviewProvider {

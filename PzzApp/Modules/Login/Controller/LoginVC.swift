@@ -16,9 +16,8 @@ final class LoginVC: BaseViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var emailErrorLabel: UILabel!
-    @IBOutlet weak var passwordErrorLabel: UILabel!
     
+    private let apiManager: Fetch = APIManager()
     private let storage = StorageService.shared
     private var users: Results<User>!
     private var user: User?
@@ -28,10 +27,14 @@ final class LoginVC: BaseViewController {
         super.viewDidLoad()
         setupUI()
         changeNavStack()
-        users = realm.objects(User.self)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        users = realm.objects(User.self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -54,38 +57,41 @@ final class LoginVC: BaseViewController {
 
 //MARK: @IBAction's
 extension LoginVC {
-    @IBAction func emailTFdidEditing() {
-        guard let email = emailTextField.text else { return }
-        emailErrorLabel.isHidden = VerificationService.isValidEmail(email: email) ? true : false
-    }
-    @IBAction func passwordTFdidEditing() {
-        guard let password = passwordTextField.text else { return }
-        passwordErrorLabel.text = "Weak password"
-        passwordErrorLabel.isHidden = (VerificationService.isValidPassword(pass: password) == .weak) || (VerificationService.isValidPassword(pass: password) == .veryWeak) ? false : true
-    }
     @objc func loginTapped() {
-        guard let email = emailTextField.text,
+        guard let phone = emailTextField.text,
               let pas = passwordTextField.text
         else { return }
-        if !VerificationService.isValidEmail(email: email) {
-            showAlert(title: "Error", message: "Invalid email")
-            return
-        }
-        if VerificationService.isValidPassword(pass: pas) == .weak  || pas == ""{
-            showAlert(title: "Error", message: "Invalid password")
-            return
-        }
-        for user in users {
-            if user.login == email, user.password == pas {
-                // TODO: show main screen
+        apiManager.login(phone: phone, password: pas) { [weak self] profile, error in
+            guard let self = self else { return }
+            if let _ = error {
+                self.showAlert(title: "Неверный номер телефона или пароль")
+                print(#file, #line, error.debugDescription)
+            }
+            if let profile = profile {
                 let main = MainWrapperViewController(nibName: nil, bundle: nil)
-                main.user = user
+                for user in self.users {
+                    if user.login == phone {
+                        if user.userInfo == nil || user.userInfo?.orderSettings == nil {
+                            guard let user = self.user else { return }
+                            self.storage.createUserInfo(for: user)
+                            KeychainHelper.username = phone
+                        }
+                        self.user = user
+                        KeychainHelper.username = user.login
+                        self.storage.updateUserInfo(for: user,
+                                               with: [.name(profile.name ?? "Username"),
+                                                      .phone(profile.phone ?? "+375")])
+                        main.user = user
+                    }
+                }
                 UserDefaults.standard.set(true, forKey: "isLogin")
-                sceneDelegate.window?.rootViewController = main
-                return
+                if let addresses = profile.addresses, let user = self.user  {
+                    self.checkAddresses(for: user, with: addresses)
+                }
+                self.sceneDelegate.window?.rootViewController = main
+                
             }
         }
-        showAlert(title: "Invalid login or password")
     }
     
     @IBAction func registrationButtonTapped() {
@@ -118,6 +124,23 @@ extension LoginVC {
     
     private func changeNavStack() {
         self.navigationController?.viewControllers = [self]
+    }
+    
+    private func checkAddresses(for user: User, with addresses: [PzzAddress]) {
+        for address in addresses {
+            if let existingAddresses = user.userInfo?.addresses, existingAddresses.count > 0 {
+                for adr in existingAddresses {
+                    let convertedAddress = self.convertePzzToRealmAddress(address)
+                    if !self.storage.isAdressesMatch(convertedAddress, adr) {
+                        self.storage.saveAdressFor(user, adress: adr)
+                    }
+                }
+            } else {
+                let convertedAddress = self.convertePzzToRealmAddress(address)
+                self.storage.saveAdressFor(user, adress: convertedAddress)
+                self.storage.changeCurrentAdress(with: convertedAddress, for: user)
+            }
+        }
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {

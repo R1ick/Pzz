@@ -25,9 +25,12 @@
                         <constraint firstAttribute="width" secondItem="RD8-AV-cXr" secondAttribute="height" multiplier="1:1" id="lgJ-pQ-Fw5"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJK-CG-Dd0">
-                    <rect key="frame" x="37" y="0.0" width="13" height="18"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJK-CG-Dd0">
+                    <rect key="frame" x="0.0" y="0.0" width="50" height="17"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="17" id="Br8-hR-3Ra"/>
+                    </constraints>
                     <fontDescription key="fontDescription" name="ALSMalina" family="ALS Malina" pointSize="22"/>
                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -38,7 +41,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="wJK-CG-Dd0" firstAttribute="top" secondItem="zwx-ye-ko8" secondAttribute="top" multiplier="5" id="A6K-Sc-iq6"/>
-                <constraint firstAttribute="trailing" secondItem="wJK-CG-Dd0" secondAttribute="trailing" id="LWG-NT-Yz1"/>
+                <constraint firstAttribute="trailing" secondItem="wJK-CG-Dd0" secondAttribute="trailing" id="Mht-HJ-R38"/>
+                <constraint firstItem="wJK-CG-Dd0" firstAttribute="leading" secondItem="zwx-ye-ko8" secondAttribute="leading" id="jPL-hd-sQQ"/>
                 <constraint firstItem="RD8-AV-cXr" firstAttribute="leading" secondItem="LM8-re-lQQ" secondAttribute="leading" id="nZ9-hj-Di5"/>
                 <constraint firstItem="RD8-AV-cXr" firstAttribute="bottom" secondItem="LM8-re-lQQ" secondAttribute="bottom" id="xkf-1Y-aac"/>
             </constraints>
