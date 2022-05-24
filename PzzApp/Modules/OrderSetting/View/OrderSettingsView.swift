@@ -43,8 +43,6 @@ struct OrderSettingsView: View {
                     if showDatePicker {
                         DatePickerWithButtons(showDatePicker: $showDatePicker, savedDate: $selectedDate, selectedDate: selectedDate ?? Date())
                             .frame(height: 400)
-                        //                            .animation(.linear, value: showDatePicker)
-//                            .transition(.opacity)
                     }
                 }
                 Section("Доставка") {
@@ -82,6 +80,9 @@ struct OrderSettingsView: View {
                 Alert(title: Text("Функция находится в разработке"),
                       dismissButton: .default(Text("ОК")))
             }
+        }
+        .onAppear {
+            selectedDate = Global.currentUser.userInfo?.orderSettings?.preOrder ?? Date()
         }
         .ignoresSafeArea(.container, edges: .top)
     }

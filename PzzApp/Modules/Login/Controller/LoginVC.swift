@@ -61,6 +61,10 @@ extension LoginVC {
         guard let phone = emailTextField.text,
               let pas = passwordTextField.text
         else { return }
+        if users.count < 1 {
+            showAlert(title: "Ошибка", message: "Вам необходимо зарегистрироваться!")
+            return
+        }
         apiManager.login(phone: phone, password: pas) { [weak self] profile, error in
             guard let self = self else { return }
             if let _ = error {
@@ -127,18 +131,23 @@ extension LoginVC {
     }
     
     private func checkAddresses(for user: User, with addresses: [PzzAddress]) {
+        var convertedAddresses = [Adress]()
         for address in addresses {
-            if let existingAddresses = user.userInfo?.addresses, existingAddresses.count > 0 {
-                for adr in existingAddresses {
-                    let convertedAddress = self.convertePzzToRealmAddress(address)
-                    if !self.storage.isAdressesMatch(convertedAddress, adr) {
-                        self.storage.saveAdressFor(user, adress: adr)
-                    }
+            let converted = self.convertePzzToRealmAddress(address)
+            convertedAddresses.append(converted)
+        }
+        if let existingAddresses = user.userInfo?.addresses, existingAddresses.count > 0 {
+            for address in convertedAddresses {
+                if !existingAddresses.contains(address) {
+                    self.storage.saveAdressFor(user, adress: address)
                 }
-            } else {
-                let convertedAddress = self.convertePzzToRealmAddress(address)
-                self.storage.saveAdressFor(user, adress: convertedAddress)
-                self.storage.changeCurrentAdress(with: convertedAddress, for: user)
+            }
+        } else {
+            for (index, address) in convertedAddresses.enumerated() {
+                storage.saveAdressFor(user, adress: address)
+                if index == convertedAddresses.count - 1 {
+                    storage.changeCurrentAdress(with: address, for: user)
+                }
             }
         }
     }

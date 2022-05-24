@@ -169,24 +169,21 @@ final class StorageService: Storable, UserInfoStorable, HistoryStorable, Setting
     
     //MARK: Update order settings
     func updateOrderSettings(time: OrderTime? = nil, delivery: Delivery? = nil, payment: PaymentMethod? = nil, preOrder: Date? = nil) {
-        let settings = realm.objects(OrderSettings.self)
-        if !settings.isEmpty {
-            guard let def = settings.first else { return }
-            try! realm.write {
-                if let time = time {
-                    def.time = time
-                }
-                if let delivery = delivery {
-                    def.delivery = delivery
-                }
-                if let payment = payment {
-                    def.payment = payment
-                }
-                if let preOrder = preOrder {
-                    def.preOrder = preOrder
-                } else {
-                    def.preOrder = nil
-                }
+        guard let def = Global.currentUser.userInfo?.orderSettings else { return }
+        try! realm.write {
+            if let time = time {
+                def.time = time
+            }
+            if let delivery = delivery {
+                def.delivery = delivery
+            }
+            if let payment = payment {
+                def.payment = payment
+            }
+            if let preOrder = preOrder {
+                def.preOrder = preOrder
+            } else {
+                def.preOrder = nil
             }
         }
     }

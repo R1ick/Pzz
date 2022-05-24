@@ -7,16 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "62D10EC1-59EF-4E02-B43A-2B4CBDBF7E91"
+            uuid = "A650BA53-6DFF-4032-A48B-CAAB7765B212"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "PzzApp/Modules/Registration/Controller/RegistrationVC.swift"
+            filePath = "PzzApp/Modules/Login/Controller/LoginVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "registrationButtonTapped()"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "loginTapped()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BB755718-73AB-4431-96DD-501F76540A3D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PzzApp/Modules/Login/Controller/LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
+            landmarkName = "loginTapped()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -18,11 +18,12 @@ final class BasketVC: BaseViewController {
     @IBOutlet weak var makeOrderButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     
+    private let apiManager: Fetch = APIManager()
     private let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     private let storage = StorageService.shared
     private var settings: OrderSettings?
     private var totalAmout: Double = 0
-    private var currentDeliveryTime = "45"
+    private var currentDeliveryTime = ""
     private var foods: Results<BasketElement>!
     private var notificationToken: NotificationToken?
     private var user: User?
@@ -31,6 +32,7 @@ final class BasketVC: BaseViewController {
         super.viewDidLoad()
         registerCell(tableView)
         setupUI()
+        getDeliveryTime()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -189,11 +191,18 @@ extension BasketVC {
             switch change {
             case .initial(_):
                 return
-            case .update(_, deletions: let deletions, insertions: let insertions, modifications: _):
+            case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
                 if !insertions.isEmpty {
                     guard let index = insertions.first else { return }
                     self?.tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
                     self?.updateTotalAmout()
+                }
+                if deletions.isEmpty {
+                    if !modifications.isEmpty {
+                        guard let index = modifications.first else { return }
+                        self?.tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                        self?.updateTotalAmout()
+                    }
                 }
                 if !deletions.isEmpty {
                     guard let index = deletions.first else { return }
@@ -300,5 +309,17 @@ extension BasketVC {
         order.products = history
         order.total = total
         storage.saveToHistory(order)
+    }
+    
+    //MARK: - time request
+    private func getDeliveryTime() {
+        apiManager.getDeliveryTime { [weak self] time, error in
+            if let _ = error {
+                print(error)
+            }
+            if let time = time {
+                self?.currentDeliveryTime = time
+            }
+        }
     }
 }

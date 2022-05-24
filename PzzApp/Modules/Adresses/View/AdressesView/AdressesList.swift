@@ -15,10 +15,10 @@ struct AdressesList: View {
 
     @State var alertPresent: Bool = false
     @State var isActive: Bool = false
-    @State var addresses: [Adress] = []
     
     private let storage: AdressStorable = StorageService.shared
     private let apiManager: Fetch = APIManager()
+    @State private var addresses = [Adress]()
     
     var body: some View {
         List {
@@ -100,33 +100,15 @@ struct AdressesList: View {
                 .onAppear {
                     isActive = false
                     UITableView.appearance().backgroundColor = .clear
-//                    getProfileInfo()
                 }
+            }
+        }
+        .onAppear {
+            for adr in info.addresses {
+                self.addresses.append(adr)
             }
         }
         .padding(.bottom, 70)
-        .onAppear {
-            getProfileInfo()
-        }
-    }
-    
-    func getProfileInfo() {
-        apiManager.getProfileInfo { profile, error in
-            if let error = error {
-                print(error)
-            }
-            if let profile = profile, let addresses = profile.addresses {
-                if addresses.count == 0 {
-                    for adress in info.addresses {
-                        storage.deleteAdress(adress: adress)
-                    }
-                }
-                for address in addresses {
-                    let converted = convertePzzToRealmAddress(address)
-                    self.addresses.append(converted)
-                }
-            }
-        }
     }
     
     func deleteAddress(_ adress: Adress) {
