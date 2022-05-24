@@ -123,14 +123,8 @@ final class StorageService: Storable, UserInfoStorable, HistoryStorable, Setting
     //MARK: A
     func cleanBusket() {
         let basket = realm.objects(BasketElement.self)
-        for item in basket {
-            if realm.isInWriteTransaction {
-                realm.delete(item)
-            } else {
-                try! realm.write {
-                    realm.delete(item)
-                }
-            }
+        try! realm.write {
+            realm.delete(basket)
         }
     }
     

@@ -47,23 +47,14 @@ final class BasketVC: BaseViewController {
 extension BasketVC {
     @IBAction func makeOrderButtonTapped() {
         if isOrderAvailible() {
-            let sem = DispatchSemaphore(value: 0)
-            sem.signal()
-            DispatchQueue.main.async { [unowned self] in
-                sem.wait()
-                saveToHistory()
-                sem.signal()
+            Task {
+                await saveToHistory()
             }
-            Thread.sleep(forTimeInterval: 0.2)
-            DispatchQueue.main.async { [unowned self] in
-                sem.wait()
-                makeOrder()
-                sem.signal()
+            Thread.sleep(forTimeInterval: 0.3)
+            Task {
+                await makeOrder()
             }
-            DispatchQueue.main.async { [unowned self] in
-                sem.wait()
                 presentInfoAlert()
-            }
         }
         feedbackGenerator.impactOccurred()
     }
@@ -134,6 +125,7 @@ extension BasketVC {
         settingsButton.showsMenuAsPrimaryAction = true
     }
     
+    //MARK: - Alert
     private func presentInfoAlert() {
         guard let adresses = user?.userInfo?.addresses else { return }
         for adress in adresses {
@@ -192,10 +184,13 @@ extension BasketVC {
             case .initial(_):
                 return
             case .update(_, deletions: let deletions, insertions: let insertions, modifications: let modifications):
-                if !insertions.isEmpty {
-                    guard let index = insertions.first else { return }
-                    self?.tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
-                    self?.updateTotalAmout()
+                print("#", change)
+                if deletions.isEmpty {
+                    if !insertions.isEmpty {
+                        guard let index = insertions.first else { return }
+                        self?.tableView.insertRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+                        self?.updateTotalAmout()
+                    }
                 }
                 if deletions.isEmpty {
                     if !modifications.isEmpty {
@@ -289,12 +284,12 @@ extension BasketVC {
         }
     }
     
-    private func makeOrder() {
+    private func makeOrder() async {
         //make order request
         storage.cleanBusket()
     }
     
-    private func saveToHistory() {
+    private func saveToHistory() async {
         let order = Order()
         let history = List<HistoryElement>()
         var total = 0.0
