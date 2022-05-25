@@ -22,23 +22,23 @@ The application includes:
 
 ## Registration Screen
 
-### The user needs to enter his phone number, and then click the "Register" button, after which an SMS message with a password will be sent to the user.
+The user needs to enter his phone number, and then click the "Register" button, after which an SMS message with a password will be sent to the user.
 
 ## Custom UITabBarController
 
-### Tab bar includes custom icons. The basket icon is dynamicly changes according to the items in the basket.
+Tab bar includes custom icons. The basket icon is dynamicly changes according to the items in the basket.
 
 ![TabBar](https://media.giphy.com/media/XVNtX7ngk5lEKAJJky/giphy.gif)
 
 ## Products screen
 
-### UITableViewController with custom cells and UICollectionView for navigation at screen.
+UITableViewController with custom cells and UICollectionView for navigation at screen.
 
 ![Products](https://github.com/R1ick/Pzz/blob/dev/PzzApp/Images/products.PNG)
 
 ## Basket screen with settings menu
 
-### Contains UITableView with custom cells.
+Contains UITableView with custom cells.
 
 ![Basket](https://github.com/R1ick/Pzz/blob/dev/PzzApp/Images/basketSettings.PNG)
 
@@ -47,16 +47,16 @@ The application includes:
 ![Profile](https://github.com/R1ick/Pzz/blob/dev/PzzApp/Images/profileTextField.PNG)
 
 ## Addresses View
-### Contains List with addresses, which is load from pzz.by server.
+Contains List with addresses, which is load from pzz.by server.
 ![Addresses](https://github.com/R1ick/Pzz/blob/dev/PzzApp/Images/AddressesView.PNG)
 
 ## History View
-### Contains List of orders, which is load from realm database.
+Contains List of orders, which is load from realm database.
 
 ![History](https://github.com/R1ick/Pzz/blob/dev/PzzApp/Images/HistoryView.PNG)
 
 ## Settings View
-### Contains List of settings, that can also be seen on the Basket screen by clicking on the gear button.
+Contains List of settings, that can also be seen on the Basket screen by clicking on the gear button.
 
 ![Settings](https://github.com/R1ick/Pzz/blob/dev/PzzApp/Images/SettingsView.PNG)
 
